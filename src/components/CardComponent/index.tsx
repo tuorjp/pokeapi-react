@@ -7,10 +7,10 @@ export interface CardComponentProps {
 
 export function CardComponent({ title, image }: CardComponentProps) {
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 500 }}>
             {image ? (
                 <CardMedia
-                    sx={{ height: 140 }}
+                    sx={{ height: 500 }}
                     image={image}
                     title={title?.toUpperCase()}
                 />
@@ -30,7 +30,7 @@ export function CardComponent({ title, image }: CardComponentProps) {
                 </Typography>
             </CardContent>
             <CardActions sx={{ display: "flex", flexDirection: "row", justifyContent: "end" }}>
-                <Button size="small">Ver mais</Button>
+                <Button size="small">See more</Button>
             </CardActions>
         </Card>
     )
