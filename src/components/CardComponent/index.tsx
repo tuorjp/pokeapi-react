@@ -7,10 +7,15 @@ export interface CardComponentProps {
 
 export function CardComponent({ title, image }: CardComponentProps) {
     return (
-        <Card sx={{ maxWidth: 500 }}>
+        <Card sx={{ maxWidth: 400, p: 2 }}>
+            <CardContent sx={{ display: "flex", justifyContent: "center", color: "#2563eb" }}>
+                <Typography gutterBottom variant="h5">
+                    {title?.toUpperCase()}
+                </Typography>
+            </CardContent>
             {image ? (
                 <CardMedia
-                    sx={{ height: 500 }}
+                    sx={{ height: 400, backgroundSize: "auto", backgroundPosition: "center", backgroundRepeat: "no-repeat", transform: "scale(2.5)" }}
                     image={image}
                     title={title?.toUpperCase()}
                 />
@@ -24,13 +29,8 @@ export function CardComponent({ title, image }: CardComponentProps) {
                     </Typography>
                 </CardMedia>
             )}
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {title?.toUpperCase()}
-                </Typography>
-            </CardContent>
             <CardActions sx={{ display: "flex", flexDirection: "row", justifyContent: "end" }}>
-                <Button size="small">See more</Button>
+                <Button size="medium" variant="contained">See more</Button>
             </CardActions>
         </Card>
     )
