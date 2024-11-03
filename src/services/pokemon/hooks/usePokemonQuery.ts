@@ -3,7 +3,7 @@ import { getPokemon } from "../pokemon"
 
 export function usePokemonQuery() {
     return useQuery({
-        queryKey: ["pokemonSimple"],
+        queryKey: ["pokemonList"],
         queryFn: getPokemon,
     })
 }
