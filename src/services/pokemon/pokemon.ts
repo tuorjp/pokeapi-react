@@ -6,7 +6,7 @@ export async function getPokemon(): Promise<Pokemon[] | null> {
   try {
     const response = await api.get<{ results: MultiPokemonResponseType }>("pokemon")
     if(response?.data?.results) {
-      const pokemonArray: MultiPokemonResponseType = response.data.results;
+      const pokemonArray: MultiPokemonResponseType = response.data.results
 
       if(pokemonArray != null && pokemonArray != undefined) {
         const pokemonDetailed: Pokemon[] = await Promise.all(

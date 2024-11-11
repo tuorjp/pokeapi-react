@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material"
 import { motion } from "framer-motion"
+import { useNavigate } from "react-router-dom"
 
 export interface CardComponentProps {
     title?: string
@@ -7,17 +8,30 @@ export interface CardComponentProps {
 }
 
 export function CardComponent({ title, image }: CardComponentProps) {
+    const navigate = useNavigate()
+
     return (
-        <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Box 
+            sx={{ 
+                display: "flex", 
+                flexDirection: "column", 
+                alignItems: "center", 
+                border: "none", 
+                background: "#fff",
+                justifyContent: "center"
+            }}
+            component={"button"}
+            onClick={() => navigate(`/${title}`)}
+        >
             <motion.div
                 initial={{ borderWidth: "1px", width: 140, height: 140 }}
-                whileHover={{ borderWidth: "3px", width: 160, height: 160 }}
+                whileHover={{ borderWidth: "3px", width: 160, height: 160, border: "3px solid #dc2626" }}
                 transition={{ duration: 0.3 }}
                 style={{
                     borderRadius: "50%",
                     overflow: "hidden",
-                    border: "1px solid #000",
                     display: "flex",
+                    border: "1px solid #000",
                     alignItems: "center",
                     justifyContent: "center",
                     position: "relative",

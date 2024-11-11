@@ -9,7 +9,7 @@ export type PokemonDetailsResponse = {
   name: string;
   sprites: {
     front_default: string;
-  };
+  }
 }
 
 export interface Pokemon {
