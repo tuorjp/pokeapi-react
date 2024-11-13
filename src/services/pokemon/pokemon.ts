@@ -9,7 +9,7 @@ export async function getPokemon(): Promise<Pokemon[] | null> {
       const pokemonArray: MultiPokemonResponseType = response.data.results
 
       if (pokemonArray != null && pokemonArray != undefined) {
-        const pokemonDetailed: Pokemon[] = await Promise.all(
+        const pokemon: Pokemon[] = await Promise.all(
           pokemonArray.map(
             async (pokemon) => {
               const details = await axios.get<PokemonWithSprites>(pokemon.url)
@@ -22,7 +22,7 @@ export async function getPokemon(): Promise<Pokemon[] | null> {
           )
         )
 
-        return pokemonDetailed
+        return pokemon
       }
     }
 
@@ -38,7 +38,6 @@ export async function getPokemonDetails(name: string | undefined): Promise<Pokem
     if (!!name) {
       const detailsResponse = await api.get<PokemonDetailsType>(`pokemon/${name}`)
       const pokemonDetails = detailsResponse.data
-      console.log(pokemonDetails)
       return pokemonDetails
     }
     return null
