@@ -36,9 +36,10 @@ export async function getPokemon(): Promise<Pokemon[] | null> {
 export async function getPokemonDetails(name: string | undefined): Promise<PokemonDetailsType | null> {
   try {
     if (!!name) {
-      const detailsResponse = await api.get<{ results: PokemonDetailsType}>(`pokemon/${name}`)
+      const detailsResponse = await api.get<PokemonDetailsType>(`pokemon/${name}`)
       const pokemonDetails = detailsResponse.data
-      return pokemonDetails.results
+      console.log(pokemonDetails)
+      return pokemonDetails
     }
     return null
   } catch (error) {
