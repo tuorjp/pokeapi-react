@@ -1,18 +1,18 @@
 import axios from "axios"
 import api from "../index"
-import { MultiPokemonResponseType, Pokemon, PokemonDetailsResponse } from "./@types"
+import { MultiPokemonResponseType, Pokemon, PokemonWithSprites, PokemonDetailsType } from "./@types"
 
 export async function getPokemon(): Promise<Pokemon[] | null> {
   try {
     const response = await api.get<{ results: MultiPokemonResponseType }>("pokemon")
-    if(response?.data?.results) {
+    if (response?.data?.results) {
       const pokemonArray: MultiPokemonResponseType = response.data.results
 
-      if(pokemonArray != null && pokemonArray != undefined) {
+      if (pokemonArray != null && pokemonArray != undefined) {
         const pokemonDetailed: Pokemon[] = await Promise.all(
           pokemonArray.map(
-            async(pokemon) => {
-              const details = await axios.get<PokemonDetailsResponse>(pokemon.url)
+            async (pokemon) => {
+              const details = await axios.get<PokemonWithSprites>(pokemon.url)
 
               return {
                 name: details.data.name,
@@ -21,11 +21,25 @@ export async function getPokemon(): Promise<Pokemon[] | null> {
             }
           )
         )
-        
+
         return pokemonDetailed
       }
     }
-    
+
+    return null
+  } catch (error) {
+    console.error(error)
+    return null
+  }
+}
+
+export async function getPokemonDetails(name: string | undefined): Promise<PokemonDetailsType | null> {
+  try {
+    if (!!name) {
+      const detailsResponse = await api.get<{ results: PokemonDetailsType}>(`pokemon/${name}`)
+      const pokemonDetails = detailsResponse.data
+      return pokemonDetails.results
+    }
     return null
   } catch (error) {
     console.error(error)
