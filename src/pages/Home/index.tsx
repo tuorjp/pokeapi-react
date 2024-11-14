@@ -1,7 +1,7 @@
 import { Pokemon } from "../../@types"
 import { Box, Button, Grid } from "@mui/material"
-import { CardComponent } from "../../components/CardComponent"
-import { CardComponentLoading } from "../../components/CardComponentLoading"
+import { CardComponent } from "../../components/PokemonCardComponent"
+import { CardComponentLoading } from "../../components/PokemonCardComponentLoading"
 import { usePaginatedPokemonQuery } from "../../services/pokemon/hooks/usePaginatedPokemonQuery"
 import { CaretLeft, CaretRight } from "phosphor-react"
 
