@@ -1,6 +1,6 @@
 import axios from "axios"
 import api from "../index"
-import { MultiPokemonResponseType, Pokemon, PokemonWithSprites, PokemonDetailsType } from "./@types"
+import { MultiPokemonResponseType, Pokemon, PokemonWithSprites, PokemonDetailsType } from "../../@types"
 
 export async function getPokemon(offset: number): Promise<Pokemon[] | null> {
   try {

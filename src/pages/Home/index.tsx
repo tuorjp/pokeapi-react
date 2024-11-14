@@ -1,4 +1,4 @@
-import { Pokemon } from "../../services/pokemon/@types"
+import { Pokemon } from "../../@types"
 import { Box, Button, Grid } from "@mui/material"
 import { CardComponent } from "../../components/CardComponent"
 import { CardComponentLoading } from "../../components/CardComponentLoading"
