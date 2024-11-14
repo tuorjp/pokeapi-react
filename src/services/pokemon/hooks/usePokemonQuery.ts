@@ -1,9 +1,10 @@
-import { useQuery } from "@tanstack/react-query"
+import { keepPreviousData, useQuery } from "@tanstack/react-query"
 import { getPokemon } from "../pokemon"
 
-export function usePokemonQuery() {
+export function usePokemonQuery(offset: number) {
     return useQuery({
-        queryKey: ["pokemonList"],
-        queryFn: getPokemon,
+        queryKey: [`pokemonList${offset}`],
+        queryFn: () => getPokemon(offset),
+        placeholderData: keepPreviousData
     })
 }

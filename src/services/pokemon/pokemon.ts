@@ -2,9 +2,9 @@ import axios from "axios"
 import api from "../index"
 import { MultiPokemonResponseType, Pokemon, PokemonWithSprites, PokemonDetailsType } from "./@types"
 
-export async function getPokemon(): Promise<Pokemon[] | null> {
+export async function getPokemon(offset: number): Promise<Pokemon[] | null> {
   try {
-    const response = await api.get<{ results: MultiPokemonResponseType }>("pokemon")
+    const response = await api.get<{ results: MultiPokemonResponseType }>(`pokemon?limit=20&offset=${offset}`)
     if (response?.data?.results) {
       const pokemonArray: MultiPokemonResponseType = response.data.results
 
